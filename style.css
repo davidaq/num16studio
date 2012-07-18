@@ -1,0 +1,40 @@
+body{
+	margin:0;
+	padding:0;
+	background:#F6F6F6 url(images/bg.png) repeat-x;
+	font-size:13px;
+	font-family:微软雅黑,arial;
+}
+a{
+	text-decoration:none;
+}
+.fixedWidth{
+	width:940px;
+	margin:0 auto;
+}
+.header{
+	padding:40px 0;
+	text-align:center;
+}
+.nav{
+	background:url(images/nav-bg.png) repeat-y;
+	height:40px;
+	line-height:40px;
+	text-align:center;
+}
+.nav .top,.nav .bottom{
+	height:1px;
+	display:block;
+}
+.nav .top{
+	background:url(images/nav-top.png);
+}
+.nav .bottom{
+	background:url(images/nav-bottom.png);
+}
+.nav a{
+	color:#333;
+	font-size:15px;
+	margin:0 20px;
+	font-weight:bold;
+}
