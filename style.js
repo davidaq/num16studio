@@ -16,14 +16,14 @@ $(function(){
 			currSlide=(currSlide+1)%slideCount;
 			sliderShow(currSlide);
 		}
-		var playTick=setInterval(play,4000);
+		var playTick=setInterval(play,7000);
 		$('.slideShow .thumb .item .frame').click(function(){
 			clearInterval(playTick);
-			playTick=setInterval(play,4000);
+			playTick=setInterval(play,7000);
 			var clicked=$(this).find('img').attr('class');
 			if(clicked!=currSlide){
 				sliderHide(currSlide);
-				currSlide=clicked;
+				currSlide=clicked*1;
 				sliderShow(currSlide);
 			}
 		});

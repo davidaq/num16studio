@@ -32,15 +32,20 @@ function _display(){
 			for(i in data){
 				var item='<div class="item">';
 				item+='<h3><a href="'+data[i].html_url+'" target="_blank">['+data[i].full_name+']</a> '+data[i].description+'</h3>';
-				item+='创建于：'+data[i].created_at;
+				item+='<div class="info">管理者：'+data[i].owner.login;
+				item+=' &nbsp;&nbsp; 创建于：'+data[i].created_at;
 				item+=' &nbsp;&nbsp; 最后更新于：'+data[i].pushed_at;
-				item+='<br/>项目管理者：'+data[i].owner.login;
-				item+='<pre id="projectReadme'+readmeCount+'"></pre>';
+				item+=' &nbsp;&nbsp; 克隆地址：'+data[i].clone_url;
+				item+='</div>';
+				item+='<pre id="projectReadme'+readmeCount+'"><i>自述文件加载中。。。</i></pre>';
 				$c.append(item);
-				var readme=readmeCount;
-				$.get('projects.php',{'readme':data[i].full_name},function(data){
-					$('#projectReadme'+readme).html(data);
-				});
+				function tempF(){
+					var readme=readmeCount;
+					$.get('projects.php',{'readme':data[i].full_name},function(data){
+						$('#projectReadme'+readme).html(data);
+					});
+				}
+				tempF();
 				readmeCount++;
 			}
 		},'JSON');

@@ -91,19 +91,20 @@ a{
 	height:280px;
 	position:absolute;
 	left:100px;
-	top:40px;
+	top:30px;
 }
 .slideShow .board .item .title{
 	font-size:40px;
 	font-weight:lighter;
 	color:#A4A4A4;
-	height:75px;
+	height:80px;
 	text-shadow:1px 1px 0 #FFF;
 	text-align:center;
 }
 .slideShow .board .item .text{
-	padding-top:30px;
+	padding-top:50px;
 	font-size:14px;
+	color:#335;
 }
 .slideShow .thumb{
 	position:absolute;
@@ -181,4 +182,17 @@ a{
 }
 .footer a{
 	color:#99E;
+}
+.shelf{
+	padding:5px;
+}
+.shelf .item{
+	margin:5px;
+	padding:5px;
+}
+.shelf .item .info{
+	color:#555;
+}
+.shelf .item pre{
+	
 }
