@@ -7,6 +7,7 @@ body{
 }
 a{
 	text-decoration:none;
+	color:inherit;
 }
 .fixedWidth{
 	width:940px;
@@ -136,6 +137,7 @@ a{
 .sloganLeft,.sloganRight{
 	text-align:center;
 	width:800px;
+	text-shadow:1px 1px 0 #FFF;
 }
 .sloganLeft{
 	margin-top:50px;
@@ -152,4 +154,27 @@ a{
 	color:#999;
 	padding-bottom:20px;
 	padding-right:40px;
+}
+.stripTop{
+	height:39px;
+	background:url(images/strip-top.png);
+}
+.strip{
+	height:59px;
+	line-height:59px;
+	background:url(images/strip-bg.png);
+	text-align:center;
+	font-size:17px;
+	color:#AAA;
+	text-shadow:1px 1px 0 #FFF;
+}
+.footer{
+	height:150px;
+	line-height:150px;
+	font-size:12px;
+	color:#AAA;
+	text-align:right;
+}
+.footer a{
+	color:#99E;
 }
