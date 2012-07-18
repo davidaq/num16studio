@@ -4,6 +4,10 @@ if(isset($_GET['watching'])){
 	$github=new GithubApi('num16:num16num16');
 	$watching=$github->watching();
 	die(json_encode($watching));
+}elseif(isset($_GET['readme'])){
+	include('github_fopen.php');
+	$github=new GithubApi('num16:num16num16');
+	die($github->readme($_GET['readme']));
 }
 $_title='#16 Studio Projects';
 $_curNav='projects';
@@ -32,8 +36,12 @@ function _display(){
 				item+=' &nbsp;&nbsp; 最后更新于：'+data[i].pushed_at;
 				item+='<br/>项目管理者：'+data[i].owner.login;
 				item+='<pre id="projectReadme'+readmeCount+'"></pre>';
-				readmeCount++;
 				$c.append(item);
+				var readme=readmeCount;
+				$.get('projects.php',{'readme':data[i].full_name},function(data){
+					$('#projectReadme'+readme).html(data);
+				});
+				readmeCount++;
 			}
 		},'JSON');
 	});
