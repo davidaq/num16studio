@@ -5,5 +5,7 @@ $(function(){
 	},function(){
 		$(this).animate({opacity:1},300);	
 	});
-	
+	if($('.slideShow')[0]){
+		$('.slideShow .screen img:gt(0)').hide();
+	}
 });

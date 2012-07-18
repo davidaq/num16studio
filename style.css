@@ -35,6 +35,35 @@ a{
 .nav a{
 	color:#333;
 	font-size:15px;
-	margin:0 20px;
+	margin:0 15px;
 	font-weight:bold;
+}
+.slideShow{
+	margin-top:30px;
+	position:relative;
+	height:500px;
+}
+.slideShow .screenFrame{
+	position:relative;
+	height:372px;
+	background:#EEE;
+}
+.slideShow .screen{
+	padding:3px;
+	background:#EEE;
+}
+.slideShow .screen .frame{
+	height:365px;
+	position:relative;
+	background:#FFF;
+}
+.slideShow .screen img,.slideShow .screen .overlay{
+	width:934px;
+	height:365px;
+	position:absolute;
+	top:0px;
+	left:0px;
+}
+.slideShow .screen .overlay{
+	background:url(images/slider-overlay.png) no-repeat;
 }
