@@ -3,7 +3,7 @@ body{
 	padding:0;
 	background:#F6F6F6 url(images/bg.png) repeat-x;
 	font-size:13px;
-	font-family:微软雅黑,arial;
+	font-family:arial,微软雅黑;
 }
 a{
 	text-decoration:none;
@@ -41,7 +41,6 @@ a{
 .slideShow{
 	margin-top:30px;
 	position:relative;
-	height:500px;
 }
 .slideShow .screenFrame{
 	position:relative;
@@ -66,4 +65,91 @@ a{
 }
 .slideShow .screen .overlay{
 	background:url(images/slider-overlay.png) no-repeat;
+}
+.slideShow .screenShadow{
+	height:14px;
+	background:url(images/slider-shadow.png) no-repeat;
+}
+.slideShow .board{
+	width:419px;
+	height:349px;
+	position:absolute;
+	left:0;
+	top:60px;
+	background:url(images/slider-banner.png);
+}
+.slideShow .board .frame{
+	position:relative;
+}
+.slideShow .board .item{
+	width:290px;
+	height:280px;
+	position:absolute;
+	left:100px;
+	top:40px;
+}
+.slideShow .board .item .title{
+	font-size:40px;
+	font-weight:lighter;
+	color:#A4A4A4;
+	height:75px;
+	text-shadow:1px 1px 0 #FFF;
+	text-align:center;
+}
+.slideShow .board .item .text{
+	padding-top:30px;
+	font-size:14px;
+}
+.slideShow .thumb{
+	position:absolute;
+	top:300px;
+	left:480px;
+}
+.slideShow .thumb .item{
+	float:left;
+	position:relative;
+	height:110px;
+	width:100px;
+	margin-left:10px;
+	background:url(images/slider-thumb-shadow.png) no-repeat left bottom;
+}
+.slideShow .thumb .item .frame{
+	cursor:pointer;
+}
+.slideShow .thumb .item .frame{
+	margin-top:10px;
+	background:#DDD;
+	width:91px;
+	height:91px;
+	position:relative;
+}
+.slideShow .thumb .item img,.slideShow .thumb .item .overlay{
+	width:83px;
+	height:83px;
+	position:absolute;
+	top:4px;
+	left:4px;
+}
+.slideShow .thumb .item .overlay{
+	background:url(images/slider-thumb-overlay.png) no-repeat;
+}
+.sloganLeft,.sloganRight{
+	text-align:center;
+	width:800px;
+}
+.sloganLeft{
+	margin-top:50px;
+	background:url(images/quote-left.gif) no-repeat left top;
+	font-size:30px;
+	color:#222;
+	padding-top:25px;
+	padding-left:40px;
+	
+}
+.sloganRight{
+	background:url(images/quote-right.gif) no-repeat right bottom;
+	font-size:20px;
+	color:#999;
+	padding-bottom:20px;
+	padding-right:40px;
 }
