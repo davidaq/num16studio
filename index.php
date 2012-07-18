@@ -6,7 +6,7 @@ function _display(){
 	$_slide=array(
 		array(
 			'thumb'=>'images/slideshow/slide-1-thumb.png',
-			'image'=>'images/slideshow/slide-1.png',
+			'image'=>'images/slideshow/slide-1.jpg',
 			'title'=>'欢迎来到<br/>16号工作室',
 			'text'=><<<MSG
 &nbsp;&nbsp;&nbsp;&nbsp;
@@ -18,7 +18,7 @@ MSG
 		),
 		array(
 			'thumb'=>'images/slideshow/slide-2-thumb.png',
-			'image'=>'images/slideshow/slide-2.png',
+			'image'=>'images/slideshow/slide-2.jpg',
 			'title'=>'16号工作室<br/>的风格',
 			'text'=><<<MSG
 &nbsp;&nbsp;&nbsp;&nbsp;
@@ -29,7 +29,7 @@ MSG
 		),
 		array(
 			'thumb'=>'images/slideshow/slide-3-thumb.png',
-			'image'=>'images/slideshow/slide-3.png',
+			'image'=>'images/slideshow/slide-3.jpg',
 			'title'=>'16号工作室<br/>的源起',
 			'text'=><<<MSG
 &nbsp;&nbsp;&nbsp;&nbsp;
@@ -40,7 +40,7 @@ MSG
 		),
 		array(
 			'thumb'=>'images/slideshow/slide-4-thumb.png',
-			'image'=>'images/slideshow/slide-4.png',
+			'image'=>'images/slideshow/slide-4.jpg',
 			'title'=>'16号工作室<br/>的目标',
 			'text'=><<<MSG
 &nbsp;&nbsp;&nbsp;&nbsp;

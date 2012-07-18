@@ -33,13 +33,13 @@ function sliderShow(index){
 	var board=$('.slideShow .board .item:eq('+index+')');
 	board.css({left:70,opacity:0});
 	board.show();
-	board.stop(true,true).animate({left:100,opacity:1},400);
-	$('.slideShow .thumb .item:eq('+index+') .frame').stop(true,true).animate({marginTop:0},400);
-	$('.slideShow .screen .item:eq('+index+')').stop(true,true).fadeIn(400);
+	board.stop(true,true).animate({left:100,opacity:1},500);
+	$('.slideShow .thumb .item:eq('+index+') .frame').stop(true,true).animate({marginTop:0},500);
+	$('.slideShow .screen .item:eq('+index+')').stop(true,true).fadeIn(500);
 }
 function sliderHide(index){
 	var board=$('.slideShow .board .item:eq('+index+')');
-	board.stop(true,true).animate({left:170,opacity:0},400,function(){$(this).hide();});
-	$('.slideShow .thumb .item:eq('+index+') .frame').stop(true,true).animate({marginTop:10},400);
-	$('.slideShow .screen .item:eq('+index+')').stop(true,true).fadeOut(400);
+	board.stop(true,true).animate({left:170,opacity:0},500,function(){$(this).hide();});
+	$('.slideShow .thumb .item:eq('+index+') .frame').stop(true,true).animate({marginTop:10},500);
+	$('.slideShow .screen .item:eq('+index+')').stop(true,true).fadeOut(500);
 }
