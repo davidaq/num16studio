@@ -1,5 +1,6 @@
 <?php
 $_title='#16 Studio';
+$_curNav='home';
 
 function _display(){
 	$_slide=array(

@@ -6,7 +6,6 @@ body{
 	font-family:arial,微软雅黑;
 }
 a{
-	text-decoration:none;
 	color:inherit;
 }
 .fixedWidth{
@@ -34,10 +33,15 @@ a{
 	background:url(images/nav-bottom.png);
 }
 .nav a{
+	text-decoration:none;
 	color:#333;
 	font-size:15px;
 	margin:0 15px;
 	font-weight:bold;
+}
+.nav .current{
+	color:#999;
+	font-size:15px;
 }
 .slideShow{
 	margin-top:30px;
@@ -138,6 +142,8 @@ a{
 	text-align:center;
 	width:800px;
 	text-shadow:1px 1px 0 #FFF;
+	padding-left:40px;
+	padding-right:40px;
 }
 .sloganLeft{
 	margin-top:50px;
@@ -145,7 +151,6 @@ a{
 	font-size:30px;
 	color:#222;
 	padding-top:25px;
-	padding-left:40px;
 	
 }
 .sloganRight{
@@ -153,7 +158,6 @@ a{
 	font-size:20px;
 	color:#999;
 	padding-bottom:20px;
-	padding-right:40px;
 }
 .stripTop{
 	height:39px;
