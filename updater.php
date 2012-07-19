@@ -1,8 +1,7 @@
 <?php
 define('REPO','davidaq/num16studio');
-include 'github.php';
+require_once('github.php');
 if(isset($_GET['list'])){
-	//die('{"mk":["update.info.php","update_new.info.php","updater.php"],"rm":[]}');
 	$github=new GithubApi('num16:num16num16');
 	$files=array();
 	function ls($path=''){
@@ -79,7 +78,25 @@ function _display(){
 					$c.append('<div>没有可以更新的内容</div>');
 				else
 				{
-					function job(url,id){
+					var jobList=[];
+					for(i in data.rm){
+						$c.append('<div class="job" id="job'+jobC+'">删除 '+data.rm[i]+'</div>');
+						jobList.push({"url":'updater.php?rm='+data.rm[i],"id":jobC});
+						jobC++;
+						jobCount++;
+					}
+					for(i in data.mk){
+						$c.append('<div class="job" id="job'+jobC+'">下载 '+data.mk[i]+'</div>');
+						jobList.push({"url":'updater.php?mk='+data.mk[i],"id":jobC});
+						jobC++;
+						jobCount++;
+					}
+					function donext(){
+						var job=jobList.pop();
+						if(job)
+							dojob(job.url,job.id);
+					}
+					function dojob(url,id){
 						$.get(url,function(data){
 							if(data=='ok'){
 								$('#job'+id).addClass('ok');
@@ -90,24 +107,16 @@ function _display(){
 											$c.append('<div>更新完毕</div>');
 									});
 								}
-							}else
+								donext();
+							}else{
 								$('#job'+id).addClass('bad');
+							}
 						}).error(function(){
 							$('#job'+id).addClass('bad');
 						});
 					}
-					for(i in data.rm){
-						$c.append('<div class="job" id="job'+jobC+'">删除 '+data.rm[i]+'</div>');
-						job('updater.php?rm='+data.rm[i],jobC);
-						jobC++;
-						jobCount++;
-					}
-					for(i in data.mk){
-						$c.append('<div class="job" id="job'+jobC+'">下载 '+data.mk[i]+'</div>');
-						job('updater.php?mk='+data.mk[i],jobC);
-						jobC++;
-						jobCount++;
-					}
+					jobList.reverse();
+					donext();
 				}
 			},'JSON').error(function(){
 				alert('更新失败');
