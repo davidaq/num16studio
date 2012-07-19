@@ -58,6 +58,7 @@ if(isset($_GET['list'])){
 }elseif(isset($_GET['done'])){
 	@unlink('update.info.php');
 	rename('update_new.info.php','update.info.php');
+	die('ok');
 }
 
 $_title='#16 Studio Friendly Links';
@@ -82,15 +83,15 @@ function _display(){
 						$.get(url,function(data){
 							if(data=='ok'){
 								$('#job'+id).addClass('ok');
+								jobCount--;
+								if(jobCount==0){
+									$.get('updater.php?done',function(data){
+										if(data=='ok')
+											$c.append('<div>更新完毕</div>');
+									});
+								}
 							}else
 								$('#job'+id).addClass('bad');
-							jobCount--;
-							if(jobCount==0){
-								$.get('updater.php?done',function(data){
-									if(data=='ok')
-										$c.append('<div>更新完毕</div>');
-								});
-							}
 						}).error(function(){
 							$('#job'+id).addClass('bad');
 						});
@@ -103,7 +104,7 @@ function _display(){
 					}
 					for(i in data.mk){
 						$c.append('<div class="job" id="job'+jobC+'">下载 '+data.mk[i]+'</div>');
-						job('updater.php?mk='+data.rm[i],jobC);
+						job('updater.php?mk='+data.mk[i],jobC);
 						jobC++;
 						jobCount++;
 					}
