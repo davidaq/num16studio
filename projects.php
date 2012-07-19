@@ -1,13 +1,19 @@
 <?php
 if(isset($_GET['watching'])){
-	include('github_fopen.php');
+	include('github.php');
 	$github=new GithubApi('num16:num16num16');
 	$watching=$github->watching();
 	die(json_encode($watching));
 }elseif(isset($_GET['readme'])){
-	include('github_fopen.php');
+	include('github.php');
 	$github=new GithubApi('num16:num16num16');
 	die($github->readme($_GET['readme']));
+}elseif(isset($_GET['thumb']))
+{
+	include('github.php');
+	$github=new GithubApi('num16:num16num16');
+	header('Content-type:image/jpeg');
+	die($github->content($_GET['thumb'],'thumb.jpg'));	
 }
 $_title='#16 Studio Projects';
 $_curNav='projects';
@@ -28,25 +34,31 @@ function _display(){
 		$.get('projects.php?watching',function(data){
 			var $c=$('#projectShelf');
 			$c.html('');
-			var readmeCount=0;
+			//var readmeCount=0;
 			for(i in data){
 				var item='<div class="item">';
-				item+='<h3><a href="'+data[i].html_url+'" target="_blank">['+data[i].full_name+']</a> '+data[i].description+'</h3>';
+				var name=data[i].full_name.split('/');
+				name=name[1];
+				item+='<div class="thumb"><div class="frame">';
+				item+='<img src="projects.php?thumb='+data[i].full_name+'"/>';
+				item+='</div></div><div class="text">';
+				item+='<h3><a href="'+data[i].html_url+'" target="_blank">['+name+']</a> '+data[i].description+'</h3>';
 				item+='<div class="info">管理者：'+data[i].owner.login;
 				item+=' &nbsp;&nbsp; 创建于：'+data[i].created_at;
 				item+=' &nbsp;&nbsp; 最后更新于：'+data[i].pushed_at;
 				item+=' &nbsp;&nbsp; 克隆地址：'+data[i].clone_url;
-				item+='</div>';
-				item+='<pre id="projectReadme'+readmeCount+'"><i>自述文件加载中。。。</i></pre>';
+				item+='</div></div></div>';
+				
+				//item+='<pre id="projectReadme'+readmeCount+'"><i>自述文件加载中。。。</i></pre>';
 				$c.append(item);
-				function tempF(){
+				/*function tempF(){
 					var readme=readmeCount;
 					$.get('projects.php',{'readme':data[i].full_name},function(data){
 						$('#projectReadme'+readme).html(data);
 					});
 				}
 				tempF();
-				readmeCount++;
+				readmeCount++;*/
 			}
 		},'JSON');
 	});

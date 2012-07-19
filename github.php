@@ -1,22 +1,20 @@
 <?php
 class GithubApi{
-	private $curl;
+	private $login;
 	public function GithubApi($login){	//$login should be: username:password
-		$this->curl=curl_init();
-		curl_setopt($this->curl,CURLOPT_USERPWD,$login);
-		curl_setopt($this->curl,CURLOPT_FOLLOWLOCATION,true);
-		curl_setopt($this->curl,CURLOPT_RETURNTRANSFER,true);
+		$this->login=$login;
 	}
 	private function exec($url)
 	{
-		curl_setopt($this->curl,CURLOPT_URL,$this->url($url));
-		$ret=curl_exec($this->curl);
-		curl_close($this->curl);
-		return $ret;
+		$f=@file($this->url($url));
+		if($f)
+			return implode('',$f);
+		else
+			return NULL;
 	}
 	private function url($url)
 	{
-		return 'https://api.github.com/'.$url;
+		return 'https://'.$this->login.'@api.github.com/'.$url;
 	}
 	public function repos($user=NULL)
 	{
