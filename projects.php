@@ -45,12 +45,13 @@ function _display(){
 				item+='<div class="thumb"><div class="frame">';
 				item+='<img src="projects.php?thumb='+data[i].full_name+'"/><div class="overlay"></div>';
 				item+='</div></div><div class="text">';
-				item+='<h3><a href="'+data[i].html_url+'" target="_blank">['+name+']</a> '+data[i].description+'</h3>';
-				item+='<div class="info">管理者：'+data[i].owner.login;
-				item+=' &nbsp;&nbsp; 创建于：'+data[i].created_at;
-				item+=' &nbsp;&nbsp; 最后更新于：'+data[i].pushed_at;
-				item+=' &nbsp;&nbsp; 克隆地址：'+data[i].clone_url;
-				item+='</div></div></div>';
+				item+='<h3><a href="'+data[i].html_url+'" target="_blank">'+name+'</a></h3>';
+				item+='<div class="info">由<span>'+data[i].owner.login;
+				item+='</span>创建于<span>'+data[i].created_at;
+				item+='</span> &nbsp; | &nbsp; 最后更新于<span>'+data[i].pushed_at;
+				item+='</span> &nbsp; | &nbsp; 使用语言：<span>'+data[i].language+'</span>';
+				item+='</div><div class="description">'+data[i].description+'</div>';
+				item+='<div class="cloneUrl">Git项目克隆地址 <input onmouseup="this.select()" type="text" value="'+data[i].clone_url+'"/></div></div>';
 				
 				//item+='<pre id="projectReadme'+readmeCount+'"><i>自述文件加载中。。。</i></pre>';
 				$c.append(item);

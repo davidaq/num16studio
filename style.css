@@ -8,6 +8,9 @@ body{
 a{
 	color:inherit;
 }
+input{
+	outline:none;
+}
 .fixedWidth{
 	width:940px;
 	margin:0 auto;
@@ -185,6 +188,7 @@ a{
 }
 .shelf{
 	padding:5px;
+	background:url(images/content-bg.jpg) repeat-y left;
 }
 .shelf .item{
 	margin:5px;
@@ -196,8 +200,41 @@ a{
 	float:right;
 	width:710px;
 }
-.shelf .item .info{
+.shelf .item .text h3{
+	font-size:25px;
+	line-height:25px;
+}
+.shelf .item .text h3 a{
+	text-decoration:none;
+}
+.shelf .item .text h3 a:hover{
 	color:#555;
+}
+.shelf .item .text .description{
+	font-size:17px;
+	color:#444;
+	padding:10px;
+}
+.shelf .item .text .cloneUrl{
+	border-top:1px dashed #DDD;
+	padding:5px;
+	font-size:13px;
+	color:#999;
+}
+.shelf .item .text .cloneUrl input{
+	width:400px;
+	border:none;
+	background:transparent;
+}
+.shelf .item .info{
+	color:#999;
+	border-top:1px solid #CCC;
+	border-bottom:1px solid #CCC;
+	padding:5px;
+}
+.shelf .item .info span{
+	color:#555;
+	margin:0 2px;
 }
 .shelf .item .thumb{
 	float:left;
