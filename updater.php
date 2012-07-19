@@ -46,7 +46,7 @@ if(isset($_GET['list'])){
 	die(json_encode(array('mk'=>$mkList,'rm'=>$rmList)));
 }elseif(isset($_GET['rm'])){
 	$rm=preg_replace('/\.{2,}/','.',$_GET['rm']);
-	unlink($_GET['rm']);
+	unlink($rm);
 	die('ok');
 }elseif(isset($_GET['mk'])){
 	$mk=preg_replace('/\.{2,}/','.',$_GET['mk']);
