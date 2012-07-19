@@ -56,6 +56,7 @@ if(isset($_GET['list'])){
 	fclose($fp);
 	die('ok');
 }elseif(isset($_GET['done'])){
+	@unlink('update.info.php');
 	rename('update_new.info.php','update.info.php');
 }
 
