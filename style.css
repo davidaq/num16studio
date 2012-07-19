@@ -179,11 +179,10 @@ input{
 	text-shadow:1px 1px 0 #FFF;
 }
 .footer{
-	height:150px;
-	line-height:150px;
+	padding:50px 0;
 	font-size:12px;
 	color:#AAA;
-	text-align:right;
+	text-align:center;
 }
 .footer a{
 	color:#99E;
