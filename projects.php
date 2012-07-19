@@ -13,7 +13,10 @@ if(isset($_GET['watching'])){
 	include('github.php');
 	$github=new GithubApi('num16:num16num16');
 	header('Content-type:image/jpeg');
-	die($github->content($_GET['thumb'],'thumb.jpg'));	
+	$img=$github->content($_GET['thumb'],'thumb.jpg');
+	if(is_null($img))
+		$img=implode('',file('images/404.jpg'));
+	die($img);
 }
 $_title='#16 Studio Projects';
 $_curNav='projects';
@@ -40,7 +43,7 @@ function _display(){
 				var name=data[i].full_name.split('/');
 				name=name[1];
 				item+='<div class="thumb"><div class="frame">';
-				item+='<img src="projects.php?thumb='+data[i].full_name+'"/>';
+				item+='<img src="projects.php?thumb='+data[i].full_name+'"/><div class="overlay"></div>';
 				item+='</div></div><div class="text">';
 				item+='<h3><a href="'+data[i].html_url+'" target="_blank">['+name+']</a> '+data[i].description+'</h3>';
 				item+='<div class="info">管理者：'+data[i].owner.login;
