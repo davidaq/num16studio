@@ -7,9 +7,9 @@ class GithubApi{
 	private function exec($url)
 	{
 		$f=@file($this->url($url));
-		if($f)
+		if($f){
 			return implode('',$f);
-		else
+		}else
 			return NULL;
 	}
 	private function url($url)
@@ -38,7 +38,9 @@ class GithubApi{
 		if(isset($ret['encoding'])&&$ret['encoding']=='base64')
 		{
 			return base64_decode($ret['content']);
-		}else
+		}else if(isset($ret['message'])&&$ret['message']=='Not Found')
+			return NULL;
+		else
 			return $ret;
 	}
 	public function downloadUrl($repo,$format='zip',$ref='master')

@@ -12,10 +12,12 @@ if(isset($_GET['watching'])){
 {
 	include('github.php');
 	$github=new GithubApi('num16:num16num16');
-	header('Content-type:image/jpeg');
 	$img=$github->content($_GET['thumb'],'thumb.jpg');
-	if(is_null($img))
-		$img=implode('',file('images/404.jpg'));
+	if(is_null($img)){
+		header('location:images/404.jpg');
+		die();
+	}
+	header('Content-type:image/jpeg');
 	die($img);
 }
 $_title='#16 Studio Projects';
@@ -37,7 +39,6 @@ function _display(){
 		$.get('projects.php?watching',function(data){
 			var $c=$('#projectShelf');
 			$c.html('');
-			//var readmeCount=0;
 			for(i in data){
 				var item='<div class="item">';
 				var name=data[i].full_name.split('/');
@@ -52,19 +53,11 @@ function _display(){
 				item+='</span> &nbsp; | &nbsp; 使用语言：<span>'+data[i].language+'</span>';
 				item+='</div><div class="description">'+data[i].description+'</div>';
 				item+='<div class="cloneUrl">Git项目克隆地址 <input onmouseup="this.select()" type="text" value="'+data[i].clone_url+'"/></div></div>';
-				
-				//item+='<pre id="projectReadme'+readmeCount+'"><i>自述文件加载中。。。</i></pre>';
 				$c.append(item);
-				/*function tempF(){
-					var readme=readmeCount;
-					$.get('projects.php',{'readme':data[i].full_name},function(data){
-						$('#projectReadme'+readme).html(data);
-					});
-				}
-				tempF();
-				readmeCount++;*/
 			}
-		},'JSON');
+		},'JSON').error(function(err){
+			$('#projectShelf div').html('加载失败！请稍后刷新重试');
+		});
 	});
 	</script>
 <?php

@@ -162,6 +162,7 @@ input{
 	font-size:20px;
 	color:#999;
 	padding-bottom:20px;
+	margin-bottom:10px;
 }
 .stripTop{
 	height:39px;
@@ -260,4 +261,26 @@ input{
 	position:absolute;
 	top:0;
 	left:0;
+}
+.whiteBack{
+	background:#FFF;
+	padding:10px;
+	border:1px solid #ADF;
+	color:#223;
+	margin-top:20px;
+}
+.whiteBack b{
+	color:#000;
+}
+.whiteBack h2{
+	color:#444;
+	padding-left:30px;
+	padding-bottom:10px;
+	background:url(images/bolt.png) no-repeat left top;
+	border-bottom:1px solid #EEE;
+}
+.whiteBack p{
+	font-size:15px;
+	line-height:27px;
+	text-indent:20px;
 }
