@@ -52,6 +52,7 @@ MSG
 		)
 	);
 ?>
+	<script type="text/javascript" src="slideshow.js"></script>
 	<div class="slideShow fixedWidth">
 		<div class="screen">
 			<div class="frame">
