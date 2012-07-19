@@ -289,3 +289,14 @@ input{
 	float:left;
 	margin:5px;
 }
+#updateInfo .job{
+	padding:2px;
+	padding-left:20px;
+	background:url(images/status.png) no-repeat left top;
+}
+#updateInfo .ok{
+	background-position-y:-20px;
+}
+#updateInfo .bad{
+	background-position-y:-40px;
+}

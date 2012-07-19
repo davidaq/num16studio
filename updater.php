@@ -2,6 +2,7 @@
 define('REPO','davidaq/num16studio');
 include 'github.php';
 if(isset($_GET['list'])){
+	//die('{"mk":["update.info.php","update_new.info.php","updater.php"],"rm":[]}');
 	$github=new GithubApi('num16:num16num16');
 	$files=array();
 	function ls($path=''){
@@ -43,6 +44,19 @@ if(isset($_GET['list'])){
 	fwrite($fp,$buff);
 	fclose($fp);
 	die(json_encode(array('mk'=>$mkList,'rm'=>$rmList)));
+}elseif(isset($_GET['rm'])){
+	$rm=preg_replace('/\.{2,}/','.',$_GET['rm']);
+	unlink($_GET['rm']);
+	die('ok');
+}elseif(isset($_GET['mk'])){
+	$mk=preg_replace('/\.{2,}/','.',$_GET['mk']);
+	$github=new GithubApi('num16:num16num16');
+	$fp=fopen($mk,'w');
+	fwrite($fp,$github->content(REPO,$mk));
+	fclose($fp);
+	die('ok');
+}elseif(isset($_GET['done'])){
+	rename('update_new.info.php','update.info.php');
 }
 
 $_title='#16 Studio Friendly Links';
@@ -50,11 +64,53 @@ $_curNav='';
 function _display(){
 	$github=new GithubApi('num16:num16num16');
 	$repo=json_decode($github->repo(REPO),true);
-	var_dump($repo);
 ?>
 	<script type="text/javascript">
 		function startUpdate(){
-			$('#updateInfo').html('<div>正在获取更新信息……</div>');
+			var $c=$('#updateInfo');
+			var reset=$c.html();
+			var jobC=0;
+			var jobCount=0;
+			$c.html('<div>正在获取更新信息……</div>');
+			$.get('updater.php?list',function(data){
+				if(data.rm.length==0&&data.mk.length==0)
+					$c.append('<div>没有可以更新的内容</div>');
+				else
+				{
+					function job(url,id){
+						$.get(url,function(data){
+							if(data=='ok'){
+								$('#job'+id).addClass('ok');
+							}else
+								$('#job'+id).addClass('bad');
+							jobCount--;
+							if(jobCount==0){
+								$.get('updater.php?done',function(data){
+									if(data=='ok')
+										$c.append('<div>更新完毕</div>');
+								});
+							}
+						}).error(function(){
+							$('#job'+id).addClass('bad');
+						});
+					}
+					for(i in data.rm){
+						$c.append('<div class="job" id="job'+jobC+'">删除 '+data.rm[i]+'</div>');
+						job('updater.php?rm='+data.rm[i],jobC);
+						jobC++;
+						jobCount++;
+					}
+					for(i in data.mk){
+						$c.append('<div class="job" id="job'+jobC+'">下载 '+data.mk[i]+'</div>');
+						job('updater.php?mk='+data.rm[i],jobC);
+						jobC++;
+						jobCount++;
+					}
+				}
+			},'JSON').error(function(){
+				alert('更新失败');
+				$c.html(reset);
+			});
 		}
 	</script>
 	<div class="sloganLeft fixedWidth">
