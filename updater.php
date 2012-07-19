@@ -3,9 +3,46 @@ define('REPO','davidaq/num16studio');
 include 'github.php';
 if(isset($_GET['list'])){
 	$github=new GithubApi('num16:num16num16');
-	$c=$github->content(REPO,'');
-	var_dump($c);
-	die();
+	$files=array();
+	function ls($path=''){
+		global $github;
+		global $files;
+		$path=preg_replace('/\/{2,}/','\/',$path);
+		if($path{0}=='/')
+			$path=substr($path,1);
+		$c=$github->content(REPO,$path);
+		foreach($c as $f){
+			if($f['type']=='dir'){
+				ls($path.'/'.$f['path']);
+			}else
+			{
+				$files[$f['path']]=$f['sha'];
+			}
+		}
+	}
+	ls();
+	$buff=json_encode($files);
+	$local=file('update.info.php');
+	unset($local[0]);
+	$local=json_decode(implode('',$local),true);
+	if(is_null($local))
+		$local=array();
+	$mkList=array();
+	$rmList=array();
+	foreach($local as $k=>$v){
+		if(!isset($files[$k]))
+			$rmList[]=$k;
+		else if($files[$k]==$v)
+			unset($files[$k]);
+	}
+	foreach($files as $k=>$v){
+		$mkList[]=$k;
+	}
+	$fp=fopen('update_new.info.php','w');
+	fwrite($fp,date('Y-m-d H:i:s',time()).chr(10));
+	fwrite($fp,$buff);
+	fclose($fp);
+	die(json_encode(array('mk'=>$mkList,'rm'=>$rmList)));
 }
 
 $_title='#16 Studio Friendly Links';
@@ -17,7 +54,7 @@ function _display(){
 ?>
 	<script type="text/javascript">
 		function startUpdate(){
-			$('#updateInfo').html('');
+			$('#updateInfo').html('<div>正在获取更新信息……</div>');
 		}
 	</script>
 	<div class="sloganLeft fixedWidth">
@@ -44,7 +81,7 @@ function _display(){
 	<div class="whiteBack fixedWidth">
 		<h2>更新网站</h2>
 		<div id="updateInfo">
-			最后更新于：<b><?php @readfile('update.info.php');?></b>
+			最后更新于：<b><?php $f=fopen('update.info.php','r');echo fgets($f);fclose($f)?></b>
 			<a href="javascript:void(0);" onclick="startUpdate()">开始更新</a>
 		</div>
 	</div>
