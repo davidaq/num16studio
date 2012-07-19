@@ -24,6 +24,10 @@ class GithubApi{
 		}
 		return $this->exec('users/'.$user.'/repos');
 	}
+	public function repo($repo)
+	{
+		return $this->exec('repos/'.$repo);
+	}
 	public function readme($repo)
 	{
 		$ret=json_decode($this->exec('repos/'.$repo.'/readme'),true);
