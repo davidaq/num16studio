@@ -145,22 +145,23 @@ input{
 .sloganLeft,.sloganRight{
 	text-align:center;
 	width:800px;
-	text-shadow:1px 1px 0 #FFF;
+	text-shadow:3px 3px 10px #777;
 	padding-left:40px;
 	padding-right:40px;
+	font-family:华文新魏;
 }
 .sloganLeft{
 	margin-top:50px;
 	background:url(images/quote-left.gif) no-repeat left top;
-	font-size:30px;
+	font-size:35px;
 	color:#222;
 	padding-top:25px;
 	
 }
 .sloganRight{
 	background:url(images/quote-right.gif) no-repeat right bottom;
-	font-size:20px;
-	color:#999;
+	font-size:22px;
+	color:#555;
 	padding-bottom:20px;
 	margin-bottom:10px;
 }
@@ -283,4 +284,8 @@ input{
 	font-size:15px;
 	line-height:27px;
 	text-indent:20px;
+}
+.friendLinks{
+	float:left;
+	margin:5px;
 }

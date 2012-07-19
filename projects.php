@@ -26,7 +26,7 @@ $_curNav='projects';
 function _display(){
 ?>
 	<div class="sloganLeft fixedWidth">
-		开源是一种程序员传统美德，但盈利是我们生存之本
+		开源是一种程序员传统美德
 	</div>
 	<div class="sloganRight fixedWidth">
 		我们的项目均使用Git做项目维护，且可在 <a href="https://github.com">Github</a> 上找到。

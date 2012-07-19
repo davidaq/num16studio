@@ -47,7 +47,8 @@ if(!function_exists('_display'))
 		?>
 	</div>
 	<div class="footer fixedWidth">
-		Theme inspired by <a href="http://www.elegantthemes.com/">Elegant Themes</a> | Web page coded by DavidAQ
+		Theme inspired by <a href="http://www.elegantthemes.com/">Elegant Themes</a> | Web page coded by DavidAQ | 
+		<a href="updater.php">Update this website</a>
 	</div>
 </body>
 </html>
