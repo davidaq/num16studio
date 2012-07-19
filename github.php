@@ -1,8 +1,8 @@
 <?php
 class GithubApi{
 	private $login;
-	public function GithubApi($login=''){
-		$this->login=$login;
+	public function GithubApi($login=NULL){
+		$this->login=is_null($login)?'':$login.'@';
 	}
 	private function exec($url)
 	{
@@ -14,7 +14,7 @@ class GithubApi{
 	}
 	private function url($url)
 	{
-		return 'https://'.$this->login.'@api.github.com/'.$url;
+		return 'https://'.$this->login.'api.github.com/'.$url;
 	}
 	public function repos($user=NULL)
 	{

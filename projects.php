@@ -1,17 +1,12 @@
 <?php
 if(isset($_GET['watching'])){
 	include('github.php');
-	$github=new GithubApi('num16:num16num16');
-	$watching=$github->watching();
+	$github=new GithubApi();
+	$watching=$github->watching('num16');
 	die(json_encode($watching));
-}elseif(isset($_GET['readme'])){
+}elseif(isset($_GET['thumb'])){
 	include('github.php');
-	$github=new GithubApi('num16:num16num16');
-	die($github->readme($_GET['readme']));
-}elseif(isset($_GET['thumb']))
-{
-	include('github.php');
-	$github=new GithubApi('num16:num16num16');
+	$github=new GithubApi();
 	$img=$github->content($_GET['thumb'],'thumb.jpg');
 	if(is_null($img)){
 		header('location:images/404.jpg');

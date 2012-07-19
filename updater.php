@@ -2,7 +2,7 @@
 define('REPO','davidaq/num16studio');
 require_once('github.php');
 if(isset($_GET['list'])){
-	$github=new GithubApi('num16:num16num16');
+	$github=new GithubApi();
 	$files=array();
 	function ls($path=''){
 		global $github;
