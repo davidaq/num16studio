@@ -1,7 +1,7 @@
 <?php
 class GithubApi{
 	private $login;
-	public function GithubApi($login){	//$login should be: username:password
+	public function GithubApi($login=''){
 		$this->login=$login;
 	}
 	private function exec($url)
