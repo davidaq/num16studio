@@ -3,7 +3,7 @@ if(isset($_GET['watching'])){
 	include('github.php');
 	$github=new GithubApi();
 	$watching=$github->watching('num16');
-	die(json_encode($watching));
+	die(json_encode(array_reverse($watching)));
 }elseif(isset($_GET['thumb'])){
 	include('github.php');
 	$github=new GithubApi();
